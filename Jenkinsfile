@@ -19,7 +19,7 @@ pipeline {
             steps {
                 sh'''
                 docker login -u manhnh1995 -p $REGISTRY_PASS
-                docker tag -t $IMAGE:$TAG_IMAGE-$BUILD_ID manhnh1995/$IMAGE:$TAG_IMAGE-$BUILD_ID
+                docker tag $IMAGE:$TAG_IMAGE-$BUILD_ID manhnh1995/$IMAGE:$TAG_IMAGE-$BUILD_ID
                 docker push manhnh1995/$IMAGE:$TAG_IMAGE-$BUILD_ID
                 '''
             }
