@@ -2,7 +2,7 @@ pipeline {
     agent none
     environment {
       IMAGE = 'apache'
-      REGISTRY_PASS = credentials("docker-registry-pass")
+manhnh1995      REGISTRY_PASS = credentials("docker-registry-pass")
       TAG_IMAGE = 'prod'
     }
     stages {
@@ -14,5 +14,15 @@ pipeline {
             '''
           }
        }
+        stage('Push to registry'){
+            agent { label 'master' }
+            steps {
+                sh'''
+                docker login -u manhnh1995 -p $manhnh1995
+                docker tag -t $IMAGE:$TAG_IMAGE-$BUILD_ID manhnh1995/$IMAGE:$TAG_IMAGE-$BUILD_ID
+                docker push manhnh1995/$IMAGE:$TAG_IMAGE-$BUILD_ID
+                '''
+            }
+        }
     }
 }
