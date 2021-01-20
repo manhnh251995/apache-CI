@@ -29,7 +29,7 @@ pipeline {
             steps {
                 sh'''
                 docker login -u manhnh1995 -p $REGISTRY_PASS
-                docker push manhnh1995/$IMAGE:$TAG_IMAGE-$BUILD_ID
+                docker pull manhnh1995/$IMAGE:$TAG_IMAGE-$BUILD_ID
                 docker run -itd -p 8888:80 manhnh1995/$IMAGE:$TAG_IMAGE-$BUILD_ID
                 '''
             }
