@@ -2,7 +2,7 @@ pipeline {
     agent none
     environment {
       IMAGE = 'apache'
-manhnh1995      REGISTRY_PASS = credentials("docker-registry-pass")
+      REGISTRY_PASS = credentials("docker-registry-pass")
       TAG_IMAGE = 'prod'
     }
     stages {
