@@ -18,7 +18,7 @@ pipeline {
             agent { label 'master' }
             steps {
                 sh'''
-                docker login -u manhnh1995 -p $manhnh1995
+                docker login -u manhnh1995 -p $REGISTRY_PASS
                 docker tag -t $IMAGE:$TAG_IMAGE-$BUILD_ID manhnh1995/$IMAGE:$TAG_IMAGE-$BUILD_ID
                 docker push manhnh1995/$IMAGE:$TAG_IMAGE-$BUILD_ID
                 '''
